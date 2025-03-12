@@ -4,8 +4,8 @@
     font-style: normal;
     font-weight: 300;
     src: local("Figtree-Light"),
-        url("/fonts/Figtree-Light.woff2") format("woff2"),
-        url("/fonts/Figtree-Light.woff") format("woff");
+        url("../fonts/Figtree-Light.woff2") format("woff2"),
+        url("../fonts/Figtree-Light.woff") format("woff");
 }
 
 @font-face {
@@ -13,8 +13,8 @@
     font-style: italic;
     font-weight: 300;
     src: local("Figtree-LightItalic"),
-        url("/fonts/Figtree-LightItalic.woff2") format("woff2"),
-        url("/fonts/Figtree-LightItalic.woff") format("woff");
+        url("../fonts/Figtree-LightItalic.woff2") format("woff2"),
+        url("../fonts/Figtree-LightItalic.woff") format("woff");
 }
 
 @font-face {
@@ -22,8 +22,8 @@
     font-style: normal;
     font-weight: 500;
     src: local("Figtree-Medium"),
-        url("/fonts/Figtree-Medium.woff2") format("woff2"), 
-        url("/fonts/Figtree-Medium.woff") format("woff");
+        url("../fonts/Figtree-Medium.woff2") format("woff2"), 
+        url("../fonts/Figtree-Medium.woff") format("woff");
 }
 
 @font-face {
@@ -31,8 +31,8 @@
     font-style: italic;
     font-weight: 500;
     src: local("Figtree-MediumItalic"),
-        url("/fonts/Figtree-MediumItalic.woff2") format("woff2"), 
-        url("/fonts/Figtree-MediumItalic.woff") format("woff");
+        url("../fonts/Figtree-MediumItalic.woff2") format("woff2"), 
+        url("../fonts/Figtree-MediumItalic.woff") format("woff");
 }
 
 @font-face {
@@ -40,8 +40,8 @@
     font-style: normal;
     font-weight: 600;
     src: local("Figtree-SemiBold"),
-        url("/fonts/Figtree-SemiBold.woff2") format("woff2"), 
-        url("/fonts/Figtree-SemiBold.woff") format("woff");
+        url("../fonts/Figtree-SemiBold.woff2") format("woff2"), 
+        url("../fonts/Figtree-SemiBold.woff") format("woff");
 }
 
 @font-face {
@@ -49,12 +49,22 @@
     font-style: italic;
     font-weight: 600;
     src: local("Figtree-SemiBoldItalic"),
-        url("/fonts/Figtree-SemiBoldItalic.woff2") format("woff2"), 
-        url("/fonts/Figtree-SemiBoldItalic.woff") format("woff");
+        url("../fonts/Figtree-SemiBoldItalic.woff2") format("woff2"), 
+        url("../fonts/Figtree-SemiBoldItalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Caveat";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Caveat-Regular"),
+        url("../fonts/Caveat.woff2") format("woff2"),
+        url("../fonts/Caveat.woff") format("woff");
 }
 
 :root {
     --dark-green: #166534;
+    --green: #16a34a;
 }
 
 *,
@@ -124,7 +134,7 @@ img {
     font-weight: 300;
     font-size: 20px;
     line-height: 28px;
-    color: #16a34a;
+    color: var(--green);
 }
 
 .header__lang-and-contacts-container {
@@ -133,12 +143,14 @@ img {
 }
 
 .select-btn {
+    position: relative;
     display: flex;
     align-items: center;
     padding: 8px 16px;
     border: 0.8px solid #d1d5db;
     background-color: #fff;
     border-radius: 6px;
+    cursor: pointer;
 }
 
 .select-btn__img {
@@ -152,7 +164,7 @@ img {
     font-family: sans-serif;
     font-size: 14px;
     line-height: 20px;
-    font-weight: 500;
+    font-weight: 600;
     color: #374151;
 }
 
@@ -161,17 +173,57 @@ img {
     height: 20px;
 }
 
+.select-btn__banner {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 176px;
+    height: 80px;
+    padding: 4px 0;
+    border: 0.8px solid #d1d5db;
+    background-color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.select-btn__banner-item {
+    display: flex;
+    align-items: start;
+    padding: 8px 16px;
+    font-family: sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #374151;
+}
+
+.select-btn__banner-item:hover {
+    background-color: #f2f2f2;
+}
+
+.select-btn__banner-item-img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
 .header__select-btn {
     margin-right: 16px;
 }
 
 .tel {
+    outline: none;
     font-family: 'Figtree', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 28px;
     color: var(--dark-green);
+    transition: color .2s ease;
+}
+
+.tel:focus, .tel:hover {
+    color: var(--green);
 }
 
 .header__tel {
@@ -179,7 +231,13 @@ img {
 }
 
 .social-link {
+    outline: none;
     line-height: 0;
+    transition: opacity .2s ease;
+}
+
+.social-link:focus, .social-link:hover {
+    opacity: 80%;
 }
 
 .header__social-link:not(:last-child) {
@@ -219,6 +277,12 @@ img {
     font-size: 24px;
     line-height: 32px;
     color: var(--dark-green);
+    transition: color .2s ease;
+}
+
+.nav-list__item-link:focus, .nav-list__item-link:hover {
+    outline: none;
+    color: var(--green);
 }
 
 .main {
@@ -257,6 +321,12 @@ img {
     border-radius: 6px;
 }
 .cat-card__name {
+    font-family: 'Caveat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+    color: #1f2937;
 }
 
 .footer {
@@ -329,4 +399,10 @@ img {
 }
 
 .footer__contacts-link {
+    outline: none;
+    transition: color .2s ease;
+}
+
+.footer__contacts-link:focus, .footer__contacts-link:hover {
+    color: var(--green);
 }
